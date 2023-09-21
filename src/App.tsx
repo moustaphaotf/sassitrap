@@ -15,6 +15,12 @@ import Tab1 from './pages/Traps';
 import Tab2 from './pages/Settings';
 import Tab3 from './pages/Help';
 import TrapDetail from './pages/TrapDetail';
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+import { Amplify } from 'aws-amplify';
+// @ts-ignore
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -56,7 +62,7 @@ const App: React.FC = () => (
           </Route>
           <Route path='/traps/:trapId' component={TrapDetail} />
         </IonRouterOutlet>
-        <IonTabBar slot="bottom">
+        <IonTabBar  color={"primary"} slot="bottom">
           <IonTabButton tab="traps" href="/traps">
             <IonIcon aria-hidden="true" icon={logoAndroid} />
             <IonLabel>Mes pièges</IonLabel>
@@ -65,7 +71,7 @@ const App: React.FC = () => (
             <IonIcon aria-hidden="true" icon={settingsOutline} />
             <IonLabel>Paramètres</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="help" href="/help">
+          <IonTabButton  tab="help" href="/help">
             <IonIcon aria-hidden="true" icon={helpOutline} />
             <IonLabel>Assistance</IonLabel>
           </IonTabButton>
@@ -74,5 +80,4 @@ const App: React.FC = () => (
     </IonReactRouter>
   </IonApp>
 );
-
-export default App;
+export default withAuthenticator(App);

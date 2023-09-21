@@ -1,0 +1,24 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-sassitrap-dev-110948-authRole",
+      "UnauthRoleArn": "arn:aws:iam::721066310878:role/amplify-sassitrap-dev-110948-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::721066310878:role/amplify-sassitrap-dev-110948-authRole",
+      "Region": "eu-north-1",
+      "DeploymentBucketName": "amplify-sassitrap-dev-110948-deployment",
+      "UnauthRoleName": "amplify-sassitrap-dev-110948-unauthRole",
+      "StackName": "amplify-sassitrap-dev-110948",
+      "StackId": "arn:aws:cloudformation:eu-north-1:721066310878:stack/amplify-sassitrap-dev-110948/e9a7b0e0-4ca5-11ee-88dd-06c838df6bde",
+      "AmplifyAppId": "dhzn4i7djyne6"
+    },
+    "categories": {
+      "auth": {
+        "sassitrap4f0498bd": {},
+        "userPoolGroups": {}
+      },
+      "api": {
+        "sassitrap": {}
+      }
+    }
+  }
+}

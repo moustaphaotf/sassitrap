@@ -1,0 +1,9 @@
+:root{
+  /* sassitrap */
+  --ion-color-sassitrap: #401e12;
+  --ion-color-sassitrap-rgb: 64,30,18;
+  --ion-color-sassitrap-contrast: #ffffff;
+  --ion-color-sassitrap-contrast-rgb: 255,255,255;
+  --ion-color-sassitrap-shade: #381a10;
+  --ion-color-sassitrap-tint: #53352a;
+}

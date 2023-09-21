@@ -1,8 +1,7 @@
 import { IonButton, IonButtons, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonInput, IonItem, IonItemOption, IonItemOptions, IonItemSliding, IonLabel, IonList, IonModal, IonTitle, IonToolbar } from '@ionic/react';
 import { add } from 'ionicons/icons';
 import './TrapList.css';
-import { useRef, useState } from 'react';
-import { OverlayEventDetail } from '@ionic/react/dist/types/components/react-component-lib/interfaces';
+import { useEffect, useRef, useState } from 'react';
 
 interface ContainerProps {
   data: Array<{
@@ -15,6 +14,9 @@ interface ContainerProps {
 };
 
 const TrapList: React.FC<ContainerProps> = ({ data }) => {
+  useEffect(() => {
+
+  }, []);
   return (
     <>
       <IonList inset={true} mode='ios'>
@@ -29,6 +31,7 @@ const TrapList: React.FC<ContainerProps> = ({ data }) => {
           </IonItemSliding>
         ))}
       </IonList>
+      <IonItem>Hello !</IonItem>
     </>
   );
 };
