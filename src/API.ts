@@ -117,6 +117,10 @@ export type TrapData = {
   deliveredAt?: string | null,
   ownerFullName?: string | null,
   createdAt?: string | null,
+  state?: boolean | null,
+  uvleds?: boolean | null,
+  mode?: string | null,
+  alerts?: boolean | null,
 };
 
 export type UpdateTrapDataInput = {
@@ -127,6 +131,10 @@ export type UpdateTrapDataInput = {
   deliveredAt?: string | null,
   ownerFullName?: string | null,
   createdAt?: string | null,
+  state?: boolean | null,
+  uvleds?: boolean | null,
+  mode?: string | null,
+  alerts?: boolean | null,
 };
 
 export type DeleteTrapDataInput = {
@@ -357,6 +365,10 @@ export type CreateTrapDataMutation = {
     deliveredAt?: string | null,
     ownerFullName?: string | null,
     createdAt?: string | null,
+    state?: boolean | null,
+    uvleds?: boolean | null,
+    mode?: string | null,
+    alerts?: boolean | null,
   } | null,
 };
 
@@ -373,6 +385,10 @@ export type UpdateTrapDataMutation = {
     deliveredAt?: string | null,
     ownerFullName?: string | null,
     createdAt?: string | null,
+    state?: boolean | null,
+    uvleds?: boolean | null,
+    mode?: string | null,
+    alerts?: boolean | null,
   } | null,
 };
 
@@ -389,6 +405,10 @@ export type DeleteTrapDataMutation = {
     deliveredAt?: string | null,
     ownerFullName?: string | null,
     createdAt?: string | null,
+    state?: boolean | null,
+    uvleds?: boolean | null,
+    mode?: string | null,
+    alerts?: boolean | null,
   } | null,
 };
 
@@ -475,6 +495,10 @@ export type GetTrapDataQuery = {
     deliveredAt?: string | null,
     ownerFullName?: string | null,
     createdAt?: string | null,
+    state?: boolean | null,
+    uvleds?: boolean | null,
+    mode?: string | null,
+    alerts?: boolean | null,
   } | null,
 };
 
@@ -495,6 +519,10 @@ export type ListTrapDataQuery = {
       deliveredAt?: string | null,
       ownerFullName?: string | null,
       createdAt?: string | null,
+      state?: boolean | null,
+      uvleds?: boolean | null,
+      mode?: string | null,
+      alerts?: boolean | null,
     } | null > | null,
     nextToken?: string | null,
   } | null,
@@ -610,6 +638,10 @@ export type OnCreateTrapDataSubscription = {
     deliveredAt?: string | null,
     ownerFullName?: string | null,
     createdAt?: string | null,
+    state?: boolean | null,
+    uvleds?: boolean | null,
+    mode?: string | null,
+    alerts?: boolean | null,
   } | null,
 };
 
@@ -630,6 +662,10 @@ export type OnUpdateTrapDataSubscription = {
     deliveredAt?: string | null,
     ownerFullName?: string | null,
     createdAt?: string | null,
+    state?: boolean | null,
+    uvleds?: boolean | null,
+    mode?: string | null,
+    alerts?: boolean | null,
   } | null,
 };
 
@@ -650,5 +686,9 @@ export type OnDeleteTrapDataSubscription = {
     deliveredAt?: string | null,
     ownerFullName?: string | null,
     createdAt?: string | null,
+    state?: boolean | null,
+    uvleds?: boolean | null,
+    mode?: string | null,
+    alerts?: boolean | null,
   } | null,
 };

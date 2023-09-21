@@ -73,6 +73,10 @@ export const getTrapData = /* GraphQL */ `
       deliveredAt
       ownerFullName
       createdAt
+      state
+      uvleds
+      mode
+      alerts
       __typename
     }
   }
@@ -91,6 +95,10 @@ export const listTrapData = /* GraphQL */ `
         deliveredAt
         ownerFullName
         createdAt
+        state
+        uvleds
+        mode
+        alerts
         __typename
       }
       nextToken

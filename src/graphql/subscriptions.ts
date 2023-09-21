@@ -92,6 +92,10 @@ export const onCreateTrapData = /* GraphQL */ `
       deliveredAt
       ownerFullName
       createdAt
+      state
+      uvleds
+      mode
+      alerts
       __typename
     }
   }
@@ -117,6 +121,10 @@ export const onUpdateTrapData = /* GraphQL */ `
       deliveredAt
       ownerFullName
       createdAt
+      state
+      uvleds
+      mode
+      alerts
       __typename
     }
   }
@@ -142,6 +150,10 @@ export const onDeleteTrapData = /* GraphQL */ `
       deliveredAt
       ownerFullName
       createdAt
+      state
+      uvleds
+      mode
+      alerts
       __typename
     }
   }

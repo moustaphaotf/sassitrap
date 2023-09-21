@@ -4,18 +4,12 @@ import { useParams } from 'react-router';
 import auto from '../public/mosquitto-bite.png'
 import logo from '../public/logo.svg'
 import './TrapDetail.css';
-import { doc, getDoc, getFirestore } from 'firebase/firestore';
-import app from '../firebase-config'
-import {API, Auth, graphqlOperation, PubSub} from 'aws-amplify';
-import { AWSIoTProvider } from '@aws-amplify/pubsub'
-import { createCommand } from '../graphql/mutations'
-// @ts-ignore
-import awsconfig from '../aws-exports';
-import { listCommands, listTrapData } from '../graphql/queries';
+import {API, Auth, graphqlOperation} from 'aws-amplify';
+import { createCommand, updateTrapData } from '../graphql/mutations'
 import ampoule from "../public/ampoule.png";
 import { notificationsOutline } from 'ionicons/icons';
+import { listTrapData } from '../graphql/queries';
 
-const db = getFirestore(app);
 
 const TrapDetail: React.FC = () => {
   const { trapId } = useParams<{ trapId: string }>();
@@ -46,7 +40,8 @@ const TrapDetail: React.FC = () => {
         }
       }
     }));
-    const details = response.data.listTrapData?.items[0]
+    const details = response.data.listTrapData?.items[0];
+    console.log(details)
     setTrapDetails(details);
     setTopics({
       state: `sassitrap/${details.code}/state`,
@@ -54,6 +49,12 @@ const TrapDetail: React.FC = () => {
       alerts: `sassitrap/${details.code}/alerts`,
       uvleds: `sassitrap/${details.code}/uvleds`,
     });
+  }
+
+  const handleUpdateTrap = async (data) => {
+    console.log("updating !")
+    const response = await API.graphql(graphqlOperation(updateTrapData, {input: { ...data }}));
+    setTrapDetails(response.data.updateTrapData);
   }
 
   return (
@@ -71,8 +72,8 @@ const TrapDetail: React.FC = () => {
           <IonLabel>Mode manuel</IonLabel>
           <IonItem lines='none'>
             <IonToggle
+              checked={ trapDetails.mode === 'auto' }
               onIonChange={async (ev) => {
-                setAutoMode(!autoMode);
                 let value = ev.target.checked ? "auto" : "manual";
                 const data = `mode:${value}`;
 
@@ -81,6 +82,8 @@ const TrapDetail: React.FC = () => {
                   data: data,
                   createdAt: new Date().toISOString()
                 }}));
+                
+                handleUpdateTrap({id: trapDetails.id, mode: value });
                 console.log(ev.target.checked)
               }}
             ></IonToggle>
@@ -88,7 +91,7 @@ const TrapDetail: React.FC = () => {
           <IonLabel>Mode automatique</IonLabel>
         </div>
 
-        {autoMode ? (
+        {trapDetails.mode === 'auto' ? (
           <div className='container'>
             <div style={{display: 'flex', justifyContent: 'center', marginBottom: 20}}>
               <IonImg src={auto} style={{width: '60%', marginRight: 20}}/>
@@ -100,6 +103,7 @@ const TrapDetail: React.FC = () => {
             {/* Alerte de la présence des moustiques */}
             <IonItem lines='none' style={{marginBottom: 10, marginTop: 10}}>
               <IonToggle
+                checked={trapDetails.alerts || false}
                 onIonChange={async (ev) => {
                   let value = ev.target.checked;
                   const data = `alerts:${value}`;
@@ -108,6 +112,8 @@ const TrapDetail: React.FC = () => {
                     data: data,
                     createdAt: new Date().toISOString()
                   }}));
+
+                  handleUpdateTrap({id: trapDetails.id, alerts: value });
                   console.log(ev.target.checked)
                 }}
               >
@@ -122,6 +128,7 @@ const TrapDetail: React.FC = () => {
             {/* Activation de la lumière */}
             <IonItem lines='none' style={{marginBottom: 10, marginTop: 10}}>
               <IonToggle 
+                checked={trapDetails.uvleds || false}
                 onIonChange={async (ev) => {
                   let value = ev.target.checked;
                   const data = `uvleds:${value}`;
@@ -132,6 +139,7 @@ const TrapDetail: React.FC = () => {
                     createdAt: new Date().toISOString()
                   }}));
 
+                  handleUpdateTrap({id: trapDetails.id, uvleds: value });
                   console.log(ev.target.checked)
                 }}
               >
