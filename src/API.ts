@@ -76,16 +76,16 @@ export type DeleteTodoInput = {
 };
 
 export type CreateCommandInput = {
-  code: string,
-  data: string,
+  code?: string | null,
+  data?: string | null,
   createdAt?: string | null,
 };
 
 export type Command = {
   __typename: "Command",
   id: string,
-  code: string,
-  data: string,
+  code?: string | null,
+  data?: string | null,
   createdAt?: string | null,
 };
 
@@ -101,39 +101,44 @@ export type DeleteCommandInput = {
 };
 
 export type CreateTrapDataInput = {
-  code: string,
-  content: string,
-  ownerEmail: string,
-  deliveredAt: string,
-  createdAt: string,
-  ownerFullName: string,
+  code?: string | null,
+  ownerFullName?: string | null,
+  ownerEmail?: string | null,
+  deliveredAt?: string | null,
+  createdAt?: string | null,
+  content?: string | null,
+  mode?: string | null,
+  uvleds?: boolean | null,
+  state?: boolean | null,
+  alerts?: boolean | null,
 };
 
 export type TrapData = {
   __typename: "TrapData",
   id: string,
-  code: string,
-  ownerEmail: string,
-  deliveredAt?: string | null,
+  code?: string | null,
   ownerFullName?: string | null,
+  ownerEmail?: string | null,
+  deliveredAt?: string | null,
   createdAt?: string | null,
-  state?: boolean | null,
-  uvleds?: boolean | null,
+  content?: string | null,
   mode?: string | null,
+  uvleds?: boolean | null,
+  state?: boolean | null,
   alerts?: boolean | null,
 };
 
 export type UpdateTrapDataInput = {
   id: string,
   code?: string | null,
-  content?: string | null,
+  ownerFullName?: string | null,
   ownerEmail?: string | null,
   deliveredAt?: string | null,
-  ownerFullName?: string | null,
   createdAt?: string | null,
-  state?: boolean | null,
-  uvleds?: boolean | null,
+  content?: string | null,
   mode?: string | null,
+  uvleds?: boolean | null,
+  state?: boolean | null,
   alerts?: boolean | null,
 };
 
@@ -176,6 +181,7 @@ export type TableCommandFilterInput = {
   id?: TableIDFilterInput | null,
   code?: TableStringFilterInput | null,
   data?: TableStringFilterInput | null,
+  createdAt?: TableStringFilterInput | null,
 };
 
 export type TableIDFilterInput = {
@@ -213,9 +219,20 @@ export type CommandConnection = {
 export type TableTrapDataFilterInput = {
   id?: TableIDFilterInput | null,
   code?: TableStringFilterInput | null,
-  content?: TableStringFilterInput | null,
+  ownerFullName?: TableStringFilterInput | null,
   ownerEmail?: TableStringFilterInput | null,
   deliveredAt?: TableStringFilterInput | null,
+  createdAt?: TableStringFilterInput | null,
+  content?: TableStringFilterInput | null,
+  mode?: TableStringFilterInput | null,
+  uvleds?: TableBooleanFilterInput | null,
+  state?: TableBooleanFilterInput | null,
+  alerts?: TableBooleanFilterInput | null,
+};
+
+export type TableBooleanFilterInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
 };
 
 export type TrapDataConnection = {
@@ -318,8 +335,8 @@ export type CreateCommandMutation = {
   createCommand?:  {
     __typename: "Command",
     id: string,
-    code: string,
-    data: string,
+    code?: string | null,
+    data?: string | null,
     createdAt?: string | null,
   } | null,
 };
@@ -332,8 +349,8 @@ export type UpdateCommandMutation = {
   updateCommand?:  {
     __typename: "Command",
     id: string,
-    code: string,
-    data: string,
+    code?: string | null,
+    data?: string | null,
     createdAt?: string | null,
   } | null,
 };
@@ -346,8 +363,8 @@ export type DeleteCommandMutation = {
   deleteCommand?:  {
     __typename: "Command",
     id: string,
-    code: string,
-    data: string,
+    code?: string | null,
+    data?: string | null,
     createdAt?: string | null,
   } | null,
 };
@@ -360,14 +377,15 @@ export type CreateTrapDataMutation = {
   createTrapData?:  {
     __typename: "TrapData",
     id: string,
-    code: string,
-    ownerEmail: string,
-    deliveredAt?: string | null,
+    code?: string | null,
     ownerFullName?: string | null,
+    ownerEmail?: string | null,
+    deliveredAt?: string | null,
     createdAt?: string | null,
-    state?: boolean | null,
-    uvleds?: boolean | null,
+    content?: string | null,
     mode?: string | null,
+    uvleds?: boolean | null,
+    state?: boolean | null,
     alerts?: boolean | null,
   } | null,
 };
@@ -380,14 +398,15 @@ export type UpdateTrapDataMutation = {
   updateTrapData?:  {
     __typename: "TrapData",
     id: string,
-    code: string,
-    ownerEmail: string,
-    deliveredAt?: string | null,
+    code?: string | null,
     ownerFullName?: string | null,
+    ownerEmail?: string | null,
+    deliveredAt?: string | null,
     createdAt?: string | null,
-    state?: boolean | null,
-    uvleds?: boolean | null,
+    content?: string | null,
     mode?: string | null,
+    uvleds?: boolean | null,
+    state?: boolean | null,
     alerts?: boolean | null,
   } | null,
 };
@@ -400,14 +419,15 @@ export type DeleteTrapDataMutation = {
   deleteTrapData?:  {
     __typename: "TrapData",
     id: string,
-    code: string,
-    ownerEmail: string,
-    deliveredAt?: string | null,
+    code?: string | null,
     ownerFullName?: string | null,
+    ownerEmail?: string | null,
+    deliveredAt?: string | null,
     createdAt?: string | null,
-    state?: boolean | null,
-    uvleds?: boolean | null,
+    content?: string | null,
     mode?: string | null,
+    uvleds?: boolean | null,
+    state?: boolean | null,
     alerts?: boolean | null,
   } | null,
 };
@@ -456,8 +476,8 @@ export type GetCommandQuery = {
   getCommand?:  {
     __typename: "Command",
     id: string,
-    code: string,
-    data: string,
+    code?: string | null,
+    data?: string | null,
     createdAt?: string | null,
   } | null,
 };
@@ -474,8 +494,8 @@ export type ListCommandsQuery = {
     items?:  Array< {
       __typename: "Command",
       id: string,
-      code: string,
-      data: string,
+      code?: string | null,
+      data?: string | null,
       createdAt?: string | null,
     } | null > | null,
     nextToken?: string | null,
@@ -490,14 +510,15 @@ export type GetTrapDataQuery = {
   getTrapData?:  {
     __typename: "TrapData",
     id: string,
-    code: string,
-    ownerEmail: string,
-    deliveredAt?: string | null,
+    code?: string | null,
     ownerFullName?: string | null,
+    ownerEmail?: string | null,
+    deliveredAt?: string | null,
     createdAt?: string | null,
-    state?: boolean | null,
-    uvleds?: boolean | null,
+    content?: string | null,
     mode?: string | null,
+    uvleds?: boolean | null,
+    state?: boolean | null,
     alerts?: boolean | null,
   } | null,
 };
@@ -514,14 +535,15 @@ export type ListTrapDataQuery = {
     items?:  Array< {
       __typename: "TrapData",
       id: string,
-      code: string,
-      ownerEmail: string,
-      deliveredAt?: string | null,
+      code?: string | null,
       ownerFullName?: string | null,
+      ownerEmail?: string | null,
+      deliveredAt?: string | null,
       createdAt?: string | null,
-      state?: boolean | null,
-      uvleds?: boolean | null,
+      content?: string | null,
       mode?: string | null,
+      uvleds?: boolean | null,
+      state?: boolean | null,
       alerts?: boolean | null,
     } | null > | null,
     nextToken?: string | null,
@@ -577,14 +599,15 @@ export type OnCreateCommandSubscriptionVariables = {
   id?: string | null,
   code?: string | null,
   data?: string | null,
+  createdAt?: string | null,
 };
 
 export type OnCreateCommandSubscription = {
   onCreateCommand?:  {
     __typename: "Command",
     id: string,
-    code: string,
-    data: string,
+    code?: string | null,
+    data?: string | null,
     createdAt?: string | null,
   } | null,
 };
@@ -593,14 +616,15 @@ export type OnUpdateCommandSubscriptionVariables = {
   id?: string | null,
   code?: string | null,
   data?: string | null,
+  createdAt?: string | null,
 };
 
 export type OnUpdateCommandSubscription = {
   onUpdateCommand?:  {
     __typename: "Command",
     id: string,
-    code: string,
-    data: string,
+    code?: string | null,
+    data?: string | null,
     createdAt?: string | null,
   } | null,
 };
@@ -609,14 +633,15 @@ export type OnDeleteCommandSubscriptionVariables = {
   id?: string | null,
   code?: string | null,
   data?: string | null,
+  createdAt?: string | null,
 };
 
 export type OnDeleteCommandSubscription = {
   onDeleteCommand?:  {
     __typename: "Command",
     id: string,
-    code: string,
-    data: string,
+    code?: string | null,
+    data?: string | null,
     createdAt?: string | null,
   } | null,
 };
@@ -624,7 +649,7 @@ export type OnDeleteCommandSubscription = {
 export type OnCreateTrapDataSubscriptionVariables = {
   id?: string | null,
   code?: string | null,
-  content?: string | null,
+  ownerFullName?: string | null,
   ownerEmail?: string | null,
   deliveredAt?: string | null,
 };
@@ -633,14 +658,15 @@ export type OnCreateTrapDataSubscription = {
   onCreateTrapData?:  {
     __typename: "TrapData",
     id: string,
-    code: string,
-    ownerEmail: string,
-    deliveredAt?: string | null,
+    code?: string | null,
     ownerFullName?: string | null,
+    ownerEmail?: string | null,
+    deliveredAt?: string | null,
     createdAt?: string | null,
-    state?: boolean | null,
-    uvleds?: boolean | null,
+    content?: string | null,
     mode?: string | null,
+    uvleds?: boolean | null,
+    state?: boolean | null,
     alerts?: boolean | null,
   } | null,
 };
@@ -648,7 +674,7 @@ export type OnCreateTrapDataSubscription = {
 export type OnUpdateTrapDataSubscriptionVariables = {
   id?: string | null,
   code?: string | null,
-  content?: string | null,
+  ownerFullName?: string | null,
   ownerEmail?: string | null,
   deliveredAt?: string | null,
 };
@@ -657,14 +683,15 @@ export type OnUpdateTrapDataSubscription = {
   onUpdateTrapData?:  {
     __typename: "TrapData",
     id: string,
-    code: string,
-    ownerEmail: string,
-    deliveredAt?: string | null,
+    code?: string | null,
     ownerFullName?: string | null,
+    ownerEmail?: string | null,
+    deliveredAt?: string | null,
     createdAt?: string | null,
-    state?: boolean | null,
-    uvleds?: boolean | null,
+    content?: string | null,
     mode?: string | null,
+    uvleds?: boolean | null,
+    state?: boolean | null,
     alerts?: boolean | null,
   } | null,
 };
@@ -672,7 +699,7 @@ export type OnUpdateTrapDataSubscription = {
 export type OnDeleteTrapDataSubscriptionVariables = {
   id?: string | null,
   code?: string | null,
-  content?: string | null,
+  ownerFullName?: string | null,
   ownerEmail?: string | null,
   deliveredAt?: string | null,
 };
@@ -681,14 +708,15 @@ export type OnDeleteTrapDataSubscription = {
   onDeleteTrapData?:  {
     __typename: "TrapData",
     id: string,
-    code: string,
-    ownerEmail: string,
-    deliveredAt?: string | null,
+    code?: string | null,
     ownerFullName?: string | null,
+    ownerEmail?: string | null,
+    deliveredAt?: string | null,
     createdAt?: string | null,
-    state?: boolean | null,
-    uvleds?: boolean | null,
+    content?: string | null,
     mode?: string | null,
+    uvleds?: boolean | null,
+    state?: boolean | null,
     alerts?: boolean | null,
   } | null,
 };

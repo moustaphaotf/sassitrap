@@ -7,7 +7,9 @@
           "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 7
+              "apiKeyExpirationDate": "2024-09-25T08:05:48.576Z",
+              "apiKeyExpirationDays": 365,
+              "description": "My api access key for appsync"
             },
             "authenticationType": "API_KEY"
           }

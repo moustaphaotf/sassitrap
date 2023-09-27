@@ -96,9 +96,10 @@ const Traps: React.FC = () => {
     if (infos.role === 'admin') {
       API.graphql(graphqlOperation(listTrapData))
       .then(response => {
-        setTraps(response.data.listTrapData.items);
+        console.log(response)
+        setTraps(response.data.listTrapData?.items || []);
         setLoading(false);
-      }).catch(e => console.log(error));
+      }).catch(error => console.log(error));
     } else if(infos.role === 'client'){
       API.graphql(graphqlOperation(listTrapData, {
         filter: {

@@ -85,13 +85,14 @@ export const createTrapData = /* GraphQL */ `
     createTrapData(input: $input) {
       id
       code
+      ownerFullName
       ownerEmail
       deliveredAt
-      ownerFullName
       createdAt
-      state
-      uvleds
+      content
       mode
+      uvleds
+      state
       alerts
       __typename
     }
@@ -102,13 +103,14 @@ export const updateTrapData = /* GraphQL */ `
     updateTrapData(input: $input) {
       id
       code
+      ownerFullName
       ownerEmail
       deliveredAt
-      ownerFullName
       createdAt
-      state
-      uvleds
+      content
       mode
+      uvleds
+      state
       alerts
       __typename
     }
@@ -119,13 +121,14 @@ export const deleteTrapData = /* GraphQL */ `
     deleteTrapData(input: $input) {
       id
       code
+      ownerFullName
       ownerEmail
       deliveredAt
-      ownerFullName
       createdAt
-      state
-      uvleds
+      content
       mode
+      uvleds
+      state
       alerts
       __typename
     }

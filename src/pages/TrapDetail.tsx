@@ -69,7 +69,7 @@ const TrapDetail: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen>
         <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-          <IonLabel>Mode manuel</IonLabel>
+          <IonLabel>Mode distant</IonLabel>
           <IonItem lines='none'>
             <IonToggle
               checked={ trapDetails.mode === 'auto' }
@@ -88,7 +88,7 @@ const TrapDetail: React.FC = () => {
               }}
             ></IonToggle>
           </IonItem>
-          <IonLabel>Mode automatique</IonLabel>
+          <IonLabel>Mode rapproché</IonLabel>
         </div>
 
         {trapDetails.mode === 'auto' ? (

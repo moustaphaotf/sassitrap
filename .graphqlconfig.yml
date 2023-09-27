@@ -1,5 +1,5 @@
 projects:
-  sassitrap:
+  sassitrap-dev:
     schemaPath: src/graphql/schema.json
     includes:
       - src/graphql/**/*.ts
@@ -10,6 +10,6 @@ projects:
         codeGenTarget: typescript
         generatedFileName: src/API.ts
         docsFilePath: src/graphql
-extensions:
-  amplify:
-    version: 3
+        region: eu-north-1
+        apiId: rpip2e2fzvhknetzejr5raamym
+        maxDepth: 2

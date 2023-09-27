@@ -69,13 +69,14 @@ export const getTrapData = /* GraphQL */ `
     getTrapData(id: $id) {
       id
       code
+      ownerFullName
       ownerEmail
       deliveredAt
-      ownerFullName
       createdAt
-      state
-      uvleds
+      content
       mode
+      uvleds
+      state
       alerts
       __typename
     }
@@ -91,13 +92,14 @@ export const listTrapData = /* GraphQL */ `
       items {
         id
         code
+        ownerFullName
         ownerEmail
         deliveredAt
-        ownerFullName
         createdAt
-        state
-        uvleds
+        content
         mode
+        uvleds
+        state
         alerts
         __typename
       }
